@@ -25,8 +25,21 @@ export class HomeComponent implements OnInit {
             .subscribe(users => {
                 this.users = users;
             });
+            //  let a = {
+            //      name : "sree",
+            //      value : "gayu"
+            //  }
+            let a = ["sree", "gayu"]
+
+            localStorage.setItem("a",JSON.stringify(a));
+            console.log("stringify",a)
+            // JSON.parse(a)
+
+            // alert("test alert")
     }
      
+   
+    // localStorage.setItem(a)
  
   model = new Hero(18, 'Dr IQ', 'Chuck Overstreet');
  

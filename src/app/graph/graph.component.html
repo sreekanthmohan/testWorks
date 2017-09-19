@@ -1,13 +1,73 @@
-    <div *ngIf='show == 1'>    
+<div *ngIf='show == 1'>
   <div style="display: block">
-    <canvas baseChart
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+      [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
   </div>
   <button (click)="randomize()">Update</button>
-     </div>      
+</div> <br><br>
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" #fileInput data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<button type="button" class="btn btn-primary" (click)="staticModal.show()">Static modal</button>
+
+<button type="button" class="btn btn-primary" #test (click)="staticModal.hide()" >Static modal</button>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static', keyboard  : false}" tabindex="-1"
+  role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Static modal</h4>
+
+        <span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body">
+        <button (click)="yes()">yes</button>
+        <button (click)="no()">no</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<!-- <div *ngIf='hShow==1'>
+<chart [options]="options" (load)="saveChart($event.context)">
+  <series (hide)="onSeriesHide($event.context)">
+    <point (select)="onPointSelect($event.context)"></point>
+  </series>
+</chart>
+
+</div> -->
+
+<input type="text" name="" [value]="username" (input)="username = $event.target.value">
+{{username}}
+
+<input type="textx" name="" [(ngModel)]="password">
+{{password}}
+
+<hr>
+<br>
+<custom-counter [(counter)]="counterValue"></custom-counter>
+<p><code>counterValue = {{counterValue}}</code></p>
+<hr>

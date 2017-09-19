@@ -1,0 +1,9 @@
+<p>
+  io-test works!
+</p>
+<input type="" name="" value="" #data (keyup)= "0"> child value : {{value}}<br>
+child inout 2 : {{childInput}}
+<app-child1 [parentValue]= "data.value" [inputValue] = "input2.value" (childChange) = "value = $event" (chInput) = "childInput = $event"></app-child1> 
+<hr>  
+<input type="" name="" value="" #input2 (keyup)="0">
+

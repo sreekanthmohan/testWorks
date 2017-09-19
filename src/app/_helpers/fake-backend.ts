@@ -18,7 +18,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                 // check user credentials and return fake jwt token if valid
                 if (params.username === testUser.username && params.password === testUser.password) {
                     connection.mockRespond(new Response(
-                        new ResponseOptions({ status: 200, body: { token: 'fake-jwt-token',role : "admin" } })
+                        new ResponseOptions({ status: 200, body: { token: 'fake-jwt-token', role: "admin" } })
                     ));
                 } else {
                     connection.mockRespond(new Response(
@@ -27,25 +27,25 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                 }
             }
 
-                 if (connection.request.url.endsWith('/api/postTest') && connection.request.method === RequestMethod.Post) {
+            if (connection.request.url.endsWith('/api/postTest') && connection.request.method === RequestMethod.Post) {
                 // get parameters from post request
                 let params = JSON.parse(connection.request.getBody());
 
                 // check user credentials and return fake jwt token if valid
                 // if (params.username === testUser.username && params.password === testUser.password) {
-                    
-                    connection.mockRespond(new Response(
-                        new ResponseOptions({ status: 200, body: { name: 'sree',alterEgo : "gayu", id :'10' } })
-                    ));
+
+                connection.mockRespond(new Response(
+                    new ResponseOptions({ status: 200, body: { name: 'sree', alterEgo: "gayu", id: '10' } })
+                ));
 
                 // } else {
-                    // connection.mockRespond(new Response(
-                    //     new ResponseOptions({ status: 400,body: { error : "error reported" } })
-                    // ));
+                // connection.mockRespond(new Response(
+                //     new ResponseOptions({ status: 400,body: { error : "error reported" } })
+                // ));
                 // }
             }
 
-                   if (connection.request.url.endsWith('/api/imagePost') && connection.request.method === RequestMethod.Post) {
+            if (connection.request.url.endsWith('/api/imagePost') && connection.request.method === RequestMethod.Post) {
                 // get parameters from post request
                 let params = JSON.parse(connection.request.getBody());
                 // console.log("params", params.student_img)
@@ -54,44 +54,55 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
                 // check user credentials and return fake jwt token if valid
                 // if (params.username === testUser.username && params.password === testUser.password) {
-                    
-                    connection.mockRespond(new Response(
-                        new ResponseOptions({ status: 200, body: { rno : "10", name : "sree", mobile_no : "9496785698", student_img : data } })
-                    ));
+
+                connection.mockRespond(new Response(
+                    new ResponseOptions({ status: 200, body: { rno: "10", name: "sree", mobile_no: "9496785698", student_img: data } })
+                ));
 
                 // } else {
-                    // connection.mockRespond(new Response(
-                    //     new ResponseOptions({ status: 400,body: { error : "error reported" } })
-                    // ));
+                // connection.mockRespond(new Response(
+                //     new ResponseOptions({ status: 400,body: { error : "error reported" } })
+                // ));
                 // }
             }
 
-                  if (connection.request.url.endsWith('/api/graph') && connection.request.method === RequestMethod.Get) {
-                      console.log("api called")
-                // get parameters from post request
-                // let params = JSON.parse(connection.request.getBody());
-                // console.log("params", params.student_img)
-                // let data = params.student_img
-                // if(params)
+            if (connection.request.url.endsWith('/api/graph') && connection.request.method === RequestMethod.Get) {
+                console.log("graph api called")
 
-                // check user credentials and return fake jwt token if valid
-                // if (params.username === testUser.username && params.password === testUser.password) {
-                    
-                    connection.mockRespond(new Response(
-                        new ResponseOptions({ status: 200, body: { 
-                            "barChartLabels" : ["2010","2011","2012","2013","2014","2015","2016"],
- "barChartData" : [
-    {"data": [65, 59, 80, 81, 56, 55, 60], "label": "series A"},
-    {"data": [28, 48, 40, 19, 86, 27, 60], "label": "series B"}
-  ]
-                         } })
-                    ));
+                connection.mockRespond(new Response(
+                    new ResponseOptions({
+                        status: 200, body: {
+                            "barChartLabels": ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                            "barChartData": [
+                                { "data": [65, 59, 80, 81, 56, 55, 60], "label": "series A" },
+                                { "data": [28, 48, 40, 19, 86, 27, 60], "label": "series B" }
+                            ]
+                        }
+                    })
+                ));
+            }
 
-                // } else {
-                    // connection.mockRespond(new Response(
-                    //     new ResponseOptions({ status: 400,body: { error : "error reported" } })
-                    // ));
-                // }
+            if (connection.request.url.endsWith('/api/series') && connection.request.method === RequestMethod.Get) {
+                console.log(" series api called")
+
+                connection.mockRespond(new Response(
+                    new ResponseOptions({
+                        status: 200, body: {
+                            "options": {
+                                "title": { "text": "angular2-highcharts example" },
+                                "series": [{
+                                    "name": "s1",
+                                    "data": [2, 3, 5, 8, 0],
+                                    "allowPointSelect": true
+                                }, {
+                                    "name": "s2",
+                                    "data": [-2, -3, -5, -8, -13],
+                                    "allowPointSelect": true
+                                }]
+                            }
+                        }
+                    })
+                ));
             }
 
             // fake users api end point

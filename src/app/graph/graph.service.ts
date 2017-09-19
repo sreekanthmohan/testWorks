@@ -1,4 +1,4 @@
-import { graph } from './graph';
+import { graph, options } from './graph';
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from './../_services/authentication.service';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
@@ -8,21 +8,36 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class GraphService {
 
-  constructor(private http: Http,  
-        private authenticationService: AuthenticationService) { }
+  constructor(private http: Http,
+    private authenticationService: AuthenticationService) { }
 
-  getGraph():Observable<graph>{
-      let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-        let options = new RequestOptions({ headers: headers });
-  console.log("service called")
+  getGraph(): Observable<graph> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
+    console.log("service called")
     return this.http.get('/api/graph', options)
-    .map(
+      .map(
       resp => <any>resp.json(),
       console.log("data in service")
-    )
-    .catch (
-      err => {throw err;}
-    )
+      )
+      .catch(
+      err => { throw err; }
+      )
+
+  }
+
+  getHighData(): Observable<options> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
+    console.log("service called")
+    return this.http.get('/api/series', options)
+      .map(
+      resp => <any>resp.json(),
+      console.log("series in service")
+      )
+      .catch(
+      err => { throw err; }
+      )
 
   }
 

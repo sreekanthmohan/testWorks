@@ -1,0 +1,31 @@
+<p>
+  input works!
+</p>
+
+<div exploreRenderer></div>
+<hr>
+
+<button type="button" class="btn btn-primary" #enable (click)="staticModal.show()">Static modal</button>
+
+<button type="button" class="btn btn-primary" #test (click)="staticModal.hide()" visible="hidden"></button>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static', keyboard  : false}" tabindex="-1"
+  role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">your session expired..!! Do you want to extend???</h4>
+
+        <!-- <span aria-hidden="true">&times;</span> -->
+      </div>
+      <div class="modal-body">
+        <button (click)="yes()">yes</button>
+        <button (click)="no()">no {{g}}</button>
+        <!-- ({{countDown | async}}) -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h1 color> Let's 'Hover' me!</h1>
